@@ -1,0 +1,36 @@
+{
+  "name": "@henryqrm/to",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "main": "dist/to.umd.js",
+  "module": "dist/to.es5.js",
+  "typings": "dist/types/to.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "HenryQRM <henryqrm@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "start": "rollup -c rollup.config.ts -w",
+    "deploy-docs": "ts-node ../tools/gh-pages-publish to",
+    "semantic-release": "semantic-release",
+    "semantic-release-prepare": "ts-node ../tools/semantic-release-prepare to"
+  },
+  "dependencies": {
+    "rimraf": "^2.6.3",
+    "rollup": "^0.67.0",
+    "semantic-release": "^15.13.12",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  }
+}
